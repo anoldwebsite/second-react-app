@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+  <!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>
+      Creating a React App without using the environment create-react-app
+    </title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+  </head>
+  <body>
+    <div id="root">React is not rendered yet!</div>
+    <script
+      src="https://unpkg.com/react@16/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script>
+      class App extends React.Component {
+        render() {
+          return React.createElement(
+            "div", //type
+            {}, //We don't want any attributes here.
+            [
+              React.createElement("h1", {}, "React is rendered now!"),
+              React.createElement(Employee, {
+                name: "Dilshad",
+                job: "Doctor",
+                salary: 10000
+              }),
+              React.createElement(Employee, {
+                name: "Rana",
+                job: "Professor",
+                salary: 11000
+              }),
+              React.createElement(Employee, {
+                name: "Russell",
+                job: "Engineer",
+                salary: 10000
+              })
+            ]
+          );
+        }
+      }
+      const Employee = props => {
+        return React.createElement("div", {}, [
+          React.createElement("h2", {}, props.name),
+          React.createElement("p", {}, props.job),
+          React.createElement("p", {}, props.salary)
+        ]);
+      };
+      ReactDOM.render(
+        React.createElement(App),
+        document.getElementById("root")
+      );
+    </script>
+  </body>
+</html>
